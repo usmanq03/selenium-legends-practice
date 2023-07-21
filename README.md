@@ -1,1 +1,0 @@
-# selenium-legends-practice
