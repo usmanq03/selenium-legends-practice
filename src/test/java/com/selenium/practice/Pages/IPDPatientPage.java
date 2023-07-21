@@ -1,5 +1,6 @@
 package com.selenium.practice.Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -7,6 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 import com.selenium.practice.CommonMethods;
 
 public class IPDPatientPage {
+
+    public static WebElement dynamicTextLocator(String text) {
+        return CommonMethods.driver.findElement(By.xpath("//*[text()='" + text + "']"));
+    }
 
     /** ADD PATIENT LINK */
     @FindBy(xpath = "//*[text()='  Add Patient']")

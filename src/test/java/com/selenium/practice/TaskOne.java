@@ -46,7 +46,8 @@ public class TaskOne {
 
         /** PART 3 of TASK 6 */
         IPDPatientPage ipdPatientPage = new IPDPatientPage();
-        ipdPatientPage.addPatientLink.click();
+        IPDPatientPage.dynamicTextLocator("  Add Patient").click();
+        //ipdPatientPage.addPatientLink.click();
 
         /** PART 4 of TASK 6 */
         CommonMethods.waitForVisibilityOfElement(ipdPatientPage.newPatientLink);
@@ -60,9 +61,14 @@ public class TaskOne {
         /** PART 6 of TASK 6 */
         ipdPatientPage.nameTextBox.sendKeys("CHROMA TECH");
 
-        /** PART 7 of TASK 7 */
+        /** PART 7 of TASK 6 */
         ipdPatientPage.guardianNameTextBox.sendKeys("CHROMA TECH GUARDIAN");
 
+        /** PART 8 of TASK 6 */
+        ipdPatientPage.phoneNumberTextBox.sendKeys("703-687-5816");
+
+        /** PART 9 of TASK 6 */
+        ipdPatientPage.emailTextBox.sendKeys("inquiries@chromatechacademy.com");
         Thread.sleep(2000);
         CommonMethods.driver.quit();
     }
