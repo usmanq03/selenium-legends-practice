@@ -1,11 +1,15 @@
 package com.selenium.practice;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
+import java.time.Duration;
+import com.selenium.practice.Pages.DashBoardPage;
+import com.selenium.practice.Pages.IPDPatientPage;
 import com.selenium.practice.Pages.LoginPage;
 
 public class TaskOne {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         CommonMethods.launchChrome(Constants.URL);
         LoginPage loginPage = new LoginPage();
@@ -32,5 +36,34 @@ public class TaskOne {
         String actualTitle = CommonMethods.driver.getTitle();
         Assert.assertEquals(actualTitle, "Chroma Hospital");
 
+        /** PART 1 of TASK 6 */
+        loginPage.signInButton.click();
+
+
+        /** PART 2 of TASK 6 */
+        DashBoardPage dashBoardPage = new DashBoardPage();
+        dashBoardPage.ipdInPatientLink.click();
+
+        /** PART 3 of TASK 6 */
+        IPDPatientPage ipdPatientPage = new IPDPatientPage();
+        ipdPatientPage.addPatientLink.click();
+
+        /** PART 4 of TASK 6 */
+        CommonMethods.waitForVisibilityOfElement(ipdPatientPage.newPatientLink);
+        ipdPatientPage.newPatientLink.click();
+
+        /** PART 5 OF TASK 6 */
+        CommonMethods.waitForVisibilityOfElement(ipdPatientPage.addPatientModuleText);
+        String actualAddPatientModuleText = ipdPatientPage.addPatientModuleText.getText();
+        Assert.assertEquals(actualAddPatientModuleText, "Add Patient");
+
+        /** PART 6 of TASK 6 */
+        ipdPatientPage.nameTextBox.sendKeys("CHROMA TECH");
+
+        /** PART 7 of TASK 7 */
+        ipdPatientPage.guardianNameTextBox.sendKeys("CHROMA TECH GUARDIAN");
+
+        Thread.sleep(2000);
+        CommonMethods.driver.quit();
     }
 }
